@@ -1,38 +1,46 @@
 import Link from "next/link";
 
 export default function Header() {
-  const loggedIn = true;
+  const loggedIn = false;
+  const links = [
+    { href: "/events", label: "Car Events" },
+    { href: "/add-event", label: "Add Event" },
+    { href: "/more", label: "More" },
+  ];
   return (
     <header className="bg-black text-white py-4 px-20 flex items-center justify-between shadow-lg">
       <Logo />
       <div className="flex items-center gap-4">
-        <nav className="flex gap-20">
-          <Link href="/events" className="hover:text-gray-400">
-            Car Events
-          </Link>
-          <Link href="/add-event" className="hover:text-gray-400">
-            Add Event
-          </Link>
-          <Link href="/more" className="hover:text-gray-400">
-            More
-          </Link>
+        <nav className="flex gap-8">
+          {links.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="hover:text-gray-400 text-[18]"
+            >
+              {item.label}
+            </Link>
+          ))}
+          {!loggedIn && (
+            <>
+              <div className="border-l border-gray-700 h-6 "></div>
+              <Link
+                href="/login"
+                className="hidden md:block hover:text-gray-400"
+              >
+                Log In
+              </Link>
+              <Link
+                href="/register"
+                className="hidden md:block hover:text-gray-400"
+              >
+                Register
+              </Link>
+            </>
+          )}
         </nav>
+        {loggedIn && <Avatar />}
       </div>
-      {loggedIn ? (
-        <div className="flex items-center gap-4">
-          <Link href="/login" className="hidden md:block hover:text-gray-400">
-            Log In
-          </Link>
-          <Link
-            href="/register"
-            className="hidden md:block hover:text-gray-400"
-          >
-            Register
-          </Link>
-        </div>
-      ) : (
-        <Avatar />
-      )}
     </header>
   );
 }
@@ -40,7 +48,7 @@ export default function Header() {
 function Avatar() {
   return (
     <Link
-      className="relative w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600"
+      className="relative size-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600 ml-10"
       href={""}
     >
       <svg
@@ -60,8 +68,8 @@ function Avatar() {
 }
 function Logo() {
   return (
-    <Link href="/" className="flex items-center text-lg font-bold">
-      <span className="text-2xl">🚗</span> VOVO
+    <Link href="/" className="flex items-center text-lg text-[32px]">
+      VOVO
     </Link>
   );
 }
