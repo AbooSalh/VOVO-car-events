@@ -1,55 +1,66 @@
+"use client";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import Sidebar from "./Sidebar";
+import { useState } from "react";
+import { navLinks } from "./static";
 
 export default function Header() {
-  const loggedIn = false;
-  const links = [
-    { href: "/events", label: "Car Events" },
-    { href: "/add-event", label: "Add Event" },
-    { href: "/more", label: "More" },
-  ];
+  const [open, setOpen] = useState(false);
+  const [loggedIn] = useState(true);
   return (
-    <header className="bg-black text-white py-4 px-20 flex items-center justify-between shadow-lg position-fixed">
-      <Logo />
-      <div className="flex items-center gap-4">
-        <nav className="flex gap-8">
-          {links.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="hover:text-gray-400 text-[18] hidden md:block"
-            >
-              {item.label}
-            </Link>
-          ))}
-          {!loggedIn && (
-            <>
-              <div className="border-l border-gray-700 h-6 hidden md:block"></div>
+    <>
+      <Sidebar open={open} loggedIn={loggedIn} />
+
+      <header className="fixed top-0 left-0 w-full bg-black text-white py-4 px-20 flex items-center justify-between shadow-lg h-[72px] z-50">
+        <FontAwesomeIcon
+          icon={faBars}
+          className="size-8 md:hidden block cursor-pointer"
+          onClick={() => setOpen(!open)}
+        />
+        <Logo />
+        <div className="flex items-center md:gap-4 gap-0">
+          <nav className="flex gap-8">
+            {navLinks.map((item) => (
               <Link
-                href="/login"
-                className="hidden md:block hover:text-gray-400"
+                key={item.href}
+                href={item.href}
+                className="hover:text-gray-400 text-[18px] hidden md:block"
               >
-                Log In
+                {item.label}
               </Link>
-              <Link
-                href="/register"
-                className="hidden md:block hover:text-gray-400"
-              >
-                Register
-              </Link>
-            </>
-          )}
-        </nav>
-        {loggedIn && <Avatar />}
-      </div>
-    </header>
+            ))}
+            {!loggedIn && (
+              <>
+                <div className="border-l border-gray-700 h-6 hidden md:block"></div>
+                <Link
+                  href="/login"
+                  className="hidden md:block hover:text-gray-400"
+                >
+                  Log In
+                </Link>
+                <Link
+                  href="/register"
+                  className="hidden md:block hover:text-gray-400"
+                >
+                  Register
+                </Link>
+              </>
+            )}
+          </nav>
+          {loggedIn && <Avatar />}
+        </div>
+      </header>
+    </>
   );
 }
 
 function Avatar() {
   return (
     <Link
-      className="relative size-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600 ml-10"
-      href={""}
+      className="relative size-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600 md:ml-10"
+      href="/dashboard"
     >
       <svg
         className="absolute w-12 h-12 text-gray-400 -left-1"
@@ -66,9 +77,13 @@ function Avatar() {
     </Link>
   );
 }
+
 function Logo() {
   return (
-    <Link href="/" className="flex items-center text-lg text-[32px]">
+    <Link
+      href="/"
+      className="flex items-center text-[32px] font-semibold select-none"
+    >
       VOVO
     </Link>
   );
