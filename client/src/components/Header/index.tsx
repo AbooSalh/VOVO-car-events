@@ -8,7 +8,7 @@ export default function Header() {
     { href: "/more", label: "More" },
   ];
   return (
-    <header className="bg-black text-white py-4 px-20 flex items-center justify-between shadow-lg">
+    <header className="bg-black text-white py-4 px-20 flex items-center justify-between shadow-lg position-fixed">
       <Logo />
       <div className="flex items-center gap-4">
         <nav className="flex gap-8">
@@ -16,14 +16,14 @@ export default function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="hover:text-gray-400 text-[18]"
+              className="hover:text-gray-400 text-[18] hidden md:block"
             >
               {item.label}
             </Link>
           ))}
           {!loggedIn && (
             <>
-              <div className="border-l border-gray-700 h-6 "></div>
+              <div className="border-l border-gray-700 h-6 hidden md:block"></div>
               <Link
                 href="/login"
                 className="hidden md:block hover:text-gray-400"
