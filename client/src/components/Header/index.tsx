@@ -7,9 +7,9 @@ export default function Header() {
   return (
     <>
       <header className="fixed top-0 left-0 w-full bg-black text-white py-4 px-20 flex items-center justify-between shadow-lg h-[72px] z-50">
+        <MenuButton />
         <Logo />
         <Navigation loggedIn={loggedIn} />
-        <MenuButton />
       </header>
     </>
   );

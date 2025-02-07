@@ -7,16 +7,13 @@ import { navLinks } from "../static";
 export default function Sidebar({ open, loggedIn }: SidebarProps) {
   return (
     <nav
-      className={`fixed top-[72px] left-0 h-[calc(100vh-72px)] w-64 bg-white shadow-xl shadow-black transition-all duration-300 md:hidden ${
+      className={`select-none fixed top-[72px] left-0 h-[calc(100vh-72px)] w-64 bg-white shadow-xl shadow-black transition-all duration-300 md:hidden ${
         open ? "translate-x-0" : "-translate-x-full"
       } z-50 flex flex-col`}
     >
-      {/* Scrollable Links Section */}
       <div className="flex-1 overflow-y-auto">
         <SidebarLinks />
       </div>
-
-      {/* Bottom Section */}
       <div className="border-t p-2">
         <AuthLinks loggedIn={loggedIn} />
       </div>
