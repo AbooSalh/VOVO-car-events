@@ -1,58 +1,61 @@
-"use client";
 import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import Sidebar from "./Sidebar";
-import { useState } from "react";
 import { navLinks } from "./static";
-
+import MenuButton from "./MenuButton";
 export default function Header() {
-  const [open, setOpen] = useState(false);
-  const [loggedIn] = useState(true);
+  const loggedIn = true;
+
   return (
     <>
-      <Sidebar open={open} loggedIn={loggedIn} />
-
       <header className="fixed top-0 left-0 w-full bg-black text-white py-4 px-20 flex items-center justify-between shadow-lg h-[72px] z-50">
-        <FontAwesomeIcon
-          icon={faBars}
-          className="size-8 md:hidden block cursor-pointer"
-          onClick={() => setOpen(!open)}
-        />
         <Logo />
-        <div className="flex items-center md:gap-4 gap-0">
-          <nav className="flex gap-8">
-            {navLinks.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="hover:text-gray-400 text-[18px] hidden md:block"
-              >
-                {item.label}
-              </Link>
-            ))}
-            {!loggedIn && (
-              <>
-                <div className="border-l border-gray-700 h-6 hidden md:block"></div>
-                <Link
-                  href="/login"
-                  className="hidden md:block hover:text-gray-400"
-                >
-                  Log In
-                </Link>
-                <Link
-                  href="/register"
-                  className="hidden md:block hover:text-gray-400"
-                >
-                  Register
-                </Link>
-              </>
-            )}
-          </nav>
-          {loggedIn && <Avatar />}
-        </div>
+        <Navigation loggedIn={loggedIn} />
+        <MenuButton />
       </header>
     </>
+  );
+}
+
+function Logo() {
+  return (
+    <Link
+      href="/"
+      className="flex items-center text-[32px] font-semibold select-none"
+    >
+      VOVO
+    </Link>
+  );
+}
+
+function Navigation({ loggedIn }: { loggedIn: boolean }) {
+  return (
+    <div className="flex items-center md:gap-4 gap-0">
+      <nav className="flex gap-8">
+        {navLinks.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            className="hover:text-gray-400 text-[18px] hidden md:block"
+          >
+            {item.label}
+          </Link>
+        ))}
+        {!loggedIn && (
+          <>
+            <div className="border-l border-gray-700 h-6 hidden md:block"></div>
+            <Link href="/login" className="hidden md:block hover:text-gray-400">
+              Log In
+            </Link>
+            <Link
+              href="/register"
+              className="hidden md:block hover:text-gray-400"
+            >
+              Register
+            </Link>
+          </>
+        )}
+      </nav>
+      {loggedIn && <Avatar />}
+    </div>
   );
 }
 
@@ -74,17 +77,6 @@ function Avatar() {
           clipRule="evenodd"
         ></path>
       </svg>
-    </Link>
-  );
-}
-
-function Logo() {
-  return (
-    <Link
-      href="/"
-      className="flex items-center text-[32px] font-semibold select-none"
-    >
-      VOVO
     </Link>
   );
 }
