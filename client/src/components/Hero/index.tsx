@@ -25,7 +25,7 @@ export default function Hero() {
 const HeroHeader = () => {
   return (
     <h2
-      className={`text-[40px] text-center -mt-10 block lg:inline lg:text-[128px] text-[#CC0004] leading-none drop-shadow-2xl ${kalnia.className}`}
+      className={`text-[40px] text-center -mt-5 block lg:inline lg:text-[128px] text-[#CC0004] leading-none drop-shadow-2xl ${kalnia.className}`}
     >
       Exotic events
     </h2>
@@ -44,7 +44,7 @@ const HeroText = () => {
 
 const HeroImage = () => {
   return (
-    <div className="absolute bottom-0 left-1/2 lg:left-1/4 transform -translate-x-1/2 w-[90%] md:w-[60%] lg:w-[85%] max-w-[900px]">
+    <div className="absolute bottom-0 left-1/2 lg:left-1/2 transform -translate-x-1/2 w-[90%] md:w-[60%] lg:w-[85%] max-w-[900px]">
       <Image
         src="/imgs/home/hero/red-car.png"
         alt="car"
@@ -59,12 +59,8 @@ const HeroImage = () => {
 
 const HeroColorBox = () => {
   return (
-    <div className="bg-[#E40206] text-white text-opacity-70 w-full h-full float-right text-[80px] md:text-[110px] px-8 md:px-16 relative">
-      <div className="hidden lg:block">EXO</div>
-      <div className="hidden lg:block float-right translate-y-[-40px] md:translate-y-[-70px]">
-        TIC
-      </div>
-      <div className="lg:hidden text-center">EXOTIC</div>
+    <div className="bg-[#E40206] text-white text-opacity-70 w-full h-full float-right text-[80px] md:text-[110px] px-8  relative">
+      <div className=" text-center">EXOTIC</div>
     </div>
   );
 };
