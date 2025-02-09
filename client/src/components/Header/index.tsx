@@ -5,24 +5,24 @@ export default function Header() {
   const loggedIn = true;
 
   return (
-    <>
-      <header className="fixed top-0 left-0 w-full bg-black text-white py-4 px-20 flex items-center justify-between shadow-lg h-[72px] z-50">
-        <MenuButton />
-        <Logo />
-        <Navigation loggedIn={loggedIn} />
-      </header>
-    </>
+    <header className="fixed top-0 left-0 w-full bg-black opacity-90 text-white py-4 px-20 flex items-center justify-between shadow-lg h-[72px] z-50">
+      <MenuButton />
+      <Logo />
+      <Navigation loggedIn={loggedIn} />
+    </header>
   );
 }
 
 function Logo() {
   return (
-    <Link
-      href="/"
-      className="flex items-center text-[32px] font-semibold select-none"
-    >
-      VOVO
-    </Link>
+    <h2>
+      <Link
+        href="/"
+        className="flex items-center text-[32px] font-semibold select-none"
+      >
+        VOVO
+      </Link>
+    </h2>
   );
 }
 
