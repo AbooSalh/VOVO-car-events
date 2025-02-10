@@ -1,4 +1,4 @@
-export const heroCars = [
+export const heroCars : Car[]= [
   {
     name: "EXOTIC",
     color: "#CC0004",
@@ -21,3 +21,9 @@ export const heroCars = [
       "Low, wide, and bold—stance cars are all about style and individuality. With aggressive suspensions and custom designs, these cars make a statement wherever they roll.",
   },
 ];
+export interface Car {
+  name: string;
+  description: string;
+  img: string;
+  color: string;
+}
