@@ -1,6 +1,7 @@
-import Hero from "@/components/Hero";
-import Sponsors from "@/components/Sponsors";
-import UpcomingEvent from "@/components/UpcomingEvent";
+import FeaturedEvents from "@/components/Home/FeaturedEvents";
+import Hero from "@/components/Home/Hero";
+import Sponsors from "@/components/Home/Sponsors";
+import UpcomingEvent from "@/components/Home/UpcomingEvent";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Hero />
       <UpcomingEvent />
       <Sponsors />
+      <FeaturedEvents />
     </main>
   );
 }
