@@ -11,7 +11,7 @@ export default function Sponsors() {
   return (
     <section className="pt-20 md:pt-0">
       <h3 className={`text-center ${quantico.className} text-5xl`}>SPONSORS</h3>
-      <div className="flex flex-wrap justify-evenly gap-10 py-20">
+      <div className="flex flex-wrap justify-evenly gap-10 py-20 px-10">
         {sponsorsData.map((sponsor) => (
           <Image
             key={sponsor}
