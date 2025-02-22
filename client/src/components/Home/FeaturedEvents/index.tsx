@@ -24,6 +24,13 @@ const events = [
     date: "Sat, 10 June 2025, from 10:00",
     location: "June 10 – June 12, 2025 • Marina Bay Sands, Singapore",
   },
+  {
+    image: "/imgs/home/FeaturedEvents/event-3.png",
+    title: "SUPER CAR FEST",
+    subtitle: "Exotic & luxury car exhibition",
+    date: "Sat, 10 June 2025, from 10:00",
+    location: "June 10 – June 12, 2025 • Marina Bay Sands, Singapore",
+  },
 ];
 
 export default function FeaturedEvents() {
@@ -45,7 +52,7 @@ export default function FeaturedEvents() {
       </div>
 
       {/* Events Grid */}
-      <div className="flex flex-wrap gap-10 justify-center">
+      <div className="flex flex-wrap gap-10 justify-between">
         {events.map((event, index) => (
           <FeaturedEventsCard
             key={index}

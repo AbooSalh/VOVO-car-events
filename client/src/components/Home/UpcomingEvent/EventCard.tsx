@@ -32,23 +32,24 @@ const CountdownTimer = ({ targetDate }: CountdownProps) => {
       }
     };
 
-    updateTimer(); // Initialize immediately
+    updateTimer();
     const timer = setInterval(updateTimer, 1000);
-
     return () => clearInterval(timer);
   }, [targetDate]);
 
-  if (!timeLeft) return null; // Prevents hydration mismatch
+  if (!timeLeft) return null;
 
   return (
-    <div className="flex gap-4 mt-4">
+    <div className="flex gap-3 md:gap-6 mt-4 md:mt-6">
       {Object.entries(timeLeft).map(([unit, value]) => (
         <div
           key={unit}
-          className="text-center bg-gray-200 p-2 rounded-lg shadow-md"
+          className="text-center bg-gray-200 p-2 md:p-4 rounded-lg shadow-md min-w-[50px] md:min-w-[90px]"
         >
-          <span className="text-2xl font-bold">{value}</span>
-          <div className="text-sm uppercase font-semibold">{unit}</div>
+          <span className="text-lg md:text-3xl font-bold">{value}</span>
+          <div className="text-xs md:text-sm uppercase font-semibold">
+            {unit}
+          </div>
         </div>
       ))}
     </div>
@@ -57,29 +58,33 @@ const CountdownTimer = ({ targetDate }: CountdownProps) => {
 
 const EventCard = ({ targetDate }: { targetDate: string }) => {
   return (
-    <div className="bg-white p-6 rounded-lg shadow-lg max-w-5xl mx-auto border border-gray-300 ">
-      <div className="flex flex-col md:flex-row gap-6">
-        <div className="flex flex-col items-center p-4 bg-gray-100 rounded-lg">
+    <div className="bg-white p-6 md:p-12 rounded-xl shadow-2xl max-w-7xl mx-auto border border-gray-300 h-auto md:h-[550px] flex items-center">
+      <div className="flex flex-col md:flex-row gap-6 md:gap-12 w-full">
+        {/* Left Section */}
+        <div className="flex flex-col items-center p-4 md:p-6 bg-gray-100 rounded-lg w-full md:w-1/2">
           <Image
             src="/imgs/home/hero/EventCardCar.png"
             alt="Car"
-            width={300}
-            height={200}
-            className="mb-4"
+            width={350}
+            height={250}
+            className="mb-4 md:mb-6"
             priority
           />
           <CountdownTimer targetDate={targetDate} />
         </div>
 
-        <div className="p-6 flex flex-col justify-center text-center md:text-left">
-          <h2 className="text-3xl font-bold mb-4">Upcoming Event</h2>
-          <p className="text-gray-700 mb-6">
+        {/* Right Section */}
+        <div className="p-6 md:p-8 flex flex-col justify-center text-center md:text-left w-full md:w-1/2">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6">
+            Upcoming Event
+          </h2>
+          <p className="text-gray-700 text-base md:text-lg mb-6 md:mb-8 leading-relaxed">
             The <strong>co-Tracker</strong> project aims to create a web-based
             platform that encourages individuals to adopt sustainable lifestyle
             choices and actively contribute to environmental conservation.
           </p>
           <button
-            className="bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition"
+            className="bg-black text-white px-6 md:px-10 py-2 md:py-4 text-base md:text-lg rounded-lg hover:bg-gray-800 transition"
             aria-label="Go to event"
           >
             Go Now
