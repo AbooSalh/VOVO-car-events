@@ -52,7 +52,7 @@ export default function FeaturedEvents() {
       </div>
 
       {/* Events Grid */}
-      <div className="flex flex-wrap gap-10 justify-between">
+      <div className="flex flex-wrap gap-10 2xl:justify-between justify-center">
         {events.map((event, index) => (
           <FeaturedEventsCard
             key={index}
