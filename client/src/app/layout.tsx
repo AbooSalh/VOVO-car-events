@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { inter } from "../../public/fonts";
 import Header from "@/components/Home/Header";
+import Footer from "@/components/Home/Footer";
+import { eventsData } from "@/lib/data/carEvents";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +32,7 @@ export default function RootLayout({
       >
         <Header />
         {children}
+        <Footer data={eventsData}/>
       </body>
     </html>
   );
