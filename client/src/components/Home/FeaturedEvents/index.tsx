@@ -26,7 +26,7 @@ const events = [
   },
   {
     image: "/imgs/home/FeaturedEvents/event-3.png",
-    title: "SUPER CAR FEST",
+    title: "SUPER CAR -",
     subtitle: "Exotic & luxury car exhibition",
     date: "Sat, 10 June 2025, from 10:00",
     location: "June 10 – June 12, 2025 • Marina Bay Sands, Singapore",
